@@ -20,13 +20,13 @@ jobs:
         with:
           dotnet-version: "8.0.x"
 
-      # Se sua solução chama GenaSoft.Atos.sln, restaurar na raiz resolve dependências:
+      # Restaura a solução na raiz (agora ela existe no repo)
       - name: Restore
         run: dotnet restore ./GenaSoft.Atos.sln
 
-      # Publique o projeto de API (ajuste o caminho se necessário)
+      # Publica o projeto DA API no caminho certo
       - name: Publish
-        run: dotnet publish ./Atos.Api/Atos.Api.csproj -c Release -o ./publish
+        run: dotnet publish ./api/api/Atos.Api/Atos.Api.csproj -c Release -o ./publish
 
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v3
