@@ -1,0 +1,36 @@
+name: deploy-enasoft-api
+
+on:
+  push:
+    branches: [ "main" ]
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET 8
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "8.0.x"
+
+      # Se sua solução chama GenaSoft.Atos.sln, restaurar na raiz resolve dependências:
+      - name: Restore
+        run: dotnet restore ./GenaSoft.Atos.sln
+
+      # Publique o projeto de API (ajuste o caminho se necessário)
+      - name: Publish
+        run: dotnet publish ./Atos.Api/Atos.Api.csproj -c Release -o ./publish
+
+      - name: Deploy to Azure Web App
+        uses: azure/webapps-deploy@v3
+        with:
+          app-name: enasoft-api-dev-mdo01
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+          package: ./publish
