@@ -1,0 +1,59 @@
+﻿# .NET
+bin/
+obj/
+*.user
+*.suo
+*.cache
+*.pdb
+*.mdb
+*.opendb
+*.ilk
+*.log
+*.vsp*
+_TestResults/
+TestResult*.xml
+.nuget/
+*.nupkg
+*.snupkg
+
+# Node.js
+node_modules/
+.npm
+.pnpm
+.yarn
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.next/
+out/
+coverage/
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon?
+._*
+.Spotlight-V100
+.Trashes
+
+# VS Code
+.vscode/
+.history/
+*.code-workspace
+
+# General
+*.swp
+*.swo
+Thumbs.db
+.idea/
+*.iml
+
