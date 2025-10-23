@@ -12,6 +12,7 @@ public class AtosDbContext : DbContext
   public DbSet<NumberSequence> NumberSequences => Set<NumberSequence>();
   public DbSet<Document> Documents => Set<Document>();
   public DbSet<DocumentRelation> DocumentRelations => Set<DocumentRelation>();
+  public DbSet<AuditEvent> AuditEvents => Set<AuditEvent>();
 
   protected override void OnModelCreating(ModelBuilder b)
   {
@@ -47,5 +48,8 @@ public class AtosDbContext : DbContext
     b.Entity<NumberSequence>()
       .Property(x => x.Strategy)
       .HasConversion<string>();
+
+    b.Entity<AuditEvent>()
+      .HasIndex(x => new { x.DocumentId, x.Timestamp });
   }
 }

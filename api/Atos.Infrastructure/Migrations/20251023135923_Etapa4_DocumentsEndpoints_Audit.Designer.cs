@@ -4,6 +4,7 @@ using Atos.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Atos.Infrastructure.Migrations
 {
     [DbContext(typeof(AtosDbContext))]
-    partial class AtosDbContextModelSnapshot : ModelSnapshot
+    [Migration("20251023135923_Etapa4_DocumentsEndpoints_Audit")]
+    partial class Etapa4_DocumentsEndpoints_Audit
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
