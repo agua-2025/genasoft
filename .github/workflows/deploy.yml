@@ -1,7 +1,9 @@
-name: deploy-api
+name: deploy-enasoft-api
 
 on:
   push:
+    branches: [ "main" ]
+  pull_request:
     branches: [ "main" ]
 
 permissions:
@@ -10,21 +12,34 @@ permissions:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
 
-      - uses: actions/setup-dotnet@v4
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET 8
+        uses: actions/setup-dotnet@v4
         with:
           dotnet-version: "8.0.x"
 
-      - name: Restore
-        run: dotnet restore ./Atos.sln
+      # Descobre o caminho do Atos.Api.csproj (ex.: api/Atos.Api/Atos.Api.csproj)
+      - name: Find API project
+        id: findapi
+        shell: bash
+        run: |
+          set -e
+          API_CSPROJ=$(git ls-files | grep -Ei '(^|/)Atos\.Api/Atos\.Api\.csproj$' | head -n1)
+          if [ -z "$API_CSPROJ" ]; then
+            echo "Nao achei Atos.Api.csproj no repo"; exit 1
+          fi
+          echo "API_CSPROJ=$API_CSPROJ"
+          echo "api_csproj=$API_CSPROJ" >> $GITHUB_OUTPUT
 
-      # Se sua API está na raiz:
-      - name: Publish API
-        run: dotnet publish ./Atos.Api.csproj -c Release -o ./publish
-      # (ou, se estiver em pasta Atos.Api/, troque para:)
-      # run: dotnet publish ./Atos.Api/Atos.Api.csproj -c Release -o ./publish
+      - name: Restore
+        run: dotnet restore "${{ steps.findapi.outputs.api_csproj }}"
+
+      - name: Publish
+        run: dotnet publish "${{ steps.findapi.outputs.api_csproj }}" -c Release -o ./publish
 
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v3
