@@ -22,21 +22,18 @@ jobs:
 
       - name: Show repo layout (debug)
         run: |
-          echo "== PWD =="
           pwd
-          echo "== LIST ROOT =="
           ls -la
-          echo "== TREE (2 níveis) =="
-          find . -maxdepth 2 -type f -name "*.sln" -o -name "*.csproj" | sed 's|^\./||'
+          echo "---- find sln/csproj ----"
+          find . -maxdepth 3 -type f \( -name "*.sln" -o -name "*.csproj" \) | sed 's|^\./||'
 
-      # Ajuste estes caminhos se sua estrutura mudar:
       - name: Verify expected paths
         run: |
-          test -f "./GenaSoft.Atos.sln" || (echo "ERRO: GenaSoft.Atos.sln não encontrado na raiz" && exit 1)
+          test -f "./api/GenaSoft.Atos.sln" || (echo "ERRO: ./api/GenaSoft.Atos.sln não encontrado" && exit 1)
           test -f "./api/api/Atos.Api/Atos.Api.csproj" || (echo "ERRO: ./api/api/Atos.Api/Atos.Api.csproj não encontrado" && exit 1)
 
       - name: Restore solution
-        run: dotnet restore ./GenaSoft.Atos.sln
+        run: dotnet restore ./api/GenaSoft.Atos.sln
 
       - name: Publish API project
         run: dotnet publish ./api/api/Atos.Api/Atos.Api.csproj -c Release -o ./publish
