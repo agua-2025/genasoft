@@ -2,7 +2,8 @@ name: deploy-api
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "main", "chore/cleanup-estrutura" ]  # incluo sua branch p/ testar antes do merge
+  pull_request:
 
 permissions:
   contents: read
@@ -17,14 +18,17 @@ jobs:
         with:
           dotnet-version: "8.0.x"
 
-      - name: Restore
-        run: dotnet restore ./Atos.sln
+      - name: Debug: listar arquivos
+        run: |
+          pwd
+          ls -la
+          echo "---- localizar csproj ----"
+          find . -maxdepth 2 -type f -name "*.csproj" | sed 's|^\./||'
 
-      # Se sua API está na raiz:
+      # se seu csproj está na raiz:
       - name: Publish API
         run: dotnet publish ./Atos.Api.csproj -c Release -o ./publish
-      # (ou, se estiver em pasta Atos.Api/, troque para:)
-      # run: dotnet publish ./Atos.Api/Atos.Api.csproj -c Release -o ./publish
+      # (se estiver em Atos.Api/Atos.Api.csproj, troque o caminho acima)
 
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v3
