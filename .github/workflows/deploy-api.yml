@@ -2,7 +2,7 @@ name: deploy-api
 
 on:
   push:
-    branches: [ "main", "chore/cleanup-estrutura" ]  # incluo sua branch p/ testar antes do merge
+    branches: [ "main", "chore/cleanup-estrutura" ]  # incluo sua branch p// testar antes do merge
   pull_request:
 
 permissions:
