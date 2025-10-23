@@ -1,0 +1,17 @@
+C:\GenaSoft\api\api\Atos.Infrastructure\bin\Debug\net8.0\Atos.Infrastructure.deps.json
+C:\GenaSoft\api\api\Atos.Infrastructure\bin\Debug\net8.0\Atos.Infrastructure.runtimeconfig.json
+C:\GenaSoft\api\api\Atos.Infrastructure\bin\Debug\net8.0\Atos.Infrastructure.dll
+C:\GenaSoft\api\api\Atos.Infrastructure\bin\Debug\net8.0\Atos.Infrastructure.pdb
+C:\GenaSoft\api\api\Atos.Infrastructure\bin\Debug\net8.0\Atos.Domain.dll
+C:\GenaSoft\api\api\Atos.Infrastructure\bin\Debug\net8.0\Atos.Domain.pdb
+C:\GenaSoft\api\api\Atos.Infrastructure\obj\Debug\net8.0\Atos.Infrastructure.csproj.AssemblyReference.cache
+C:\GenaSoft\api\api\Atos.Infrastructure\obj\Debug\net8.0\Atos.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\GenaSoft\api\api\Atos.Infrastructure\obj\Debug\net8.0\Atos.Infrastructure.AssemblyInfoInputs.cache
+C:\GenaSoft\api\api\Atos.Infrastructure\obj\Debug\net8.0\Atos.Infrastructure.AssemblyInfo.cs
+C:\GenaSoft\api\api\Atos.Infrastructure\obj\Debug\net8.0\Atos.Infrastructure.csproj.CoreCompileInputs.cache
+C:\GenaSoft\api\api\Atos.Infrastructure\obj\Debug\net8.0\Atos.Inf.3E7A5CDF.Up2Date
+C:\GenaSoft\api\api\Atos.Infrastructure\obj\Debug\net8.0\Atos.Infrastructure.dll
+C:\GenaSoft\api\api\Atos.Infrastructure\obj\Debug\net8.0\refint\Atos.Infrastructure.dll
+C:\GenaSoft\api\api\Atos.Infrastructure\obj\Debug\net8.0\Atos.Infrastructure.pdb
+C:\GenaSoft\api\api\Atos.Infrastructure\obj\Debug\net8.0\Atos.Infrastructure.genruntimeconfig.cache
+C:\GenaSoft\api\api\Atos.Infrastructure\obj\Debug\net8.0\ref\Atos.Infrastructure.dll
