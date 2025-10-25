@@ -4,12 +4,16 @@ import { getBearer } from './auth'
 const BASE = process.env.NEXT_PUBLIC_API_BASE ?? 'http://localhost:5099'
 
 async function api<T>(path: string, init?: RequestInit): Promise<T> {
+  const devAuthEnabled = !!process.env.NEXT_PUBLIC_DEV_AUTH
+  const devRoles = process.env.NEXT_PUBLIC_DEV_ROLES || ''
   const res = await fetch(`${BASE}${path}`, {
     ...init,
     headers: {
       'Content-Type': 'application/json',
       ...(init?.headers || {}),
       ...(getBearer() ? { Authorization: getBearer() } : {}),
+      ...(devAuthEnabled ? { 'X-Dev-Auth': '1' } : {}),
+      ...(devAuthEnabled && devRoles ? { 'X-Dev-Roles': devRoles } : {}),
     },
     cache: 'no-store',
   })

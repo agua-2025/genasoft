@@ -1,4 +1,4 @@
-﻿'use client'
+'use client'
 import { useEffect, useRef } from 'react'
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic'
 
@@ -18,7 +18,7 @@ export default function EditorClient({ value, onChange }:{ value:string; onChang
     })
     .catch(console.error)
     return () => { editorRef.current?.destroy(); editorRef.current=null }
-  }, [])
+  }, [onChange, value])
 
   return <div className='prose max-w-none bg-white text-black rounded-xl p-4' ref={ref}/>
 }

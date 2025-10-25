@@ -1,4 +1,4 @@
-''use client''
+'use client'
 import { useEffect, useState } from 'react'
 import { Api } from '@/lib/api'
 import EditorClient from '@/app/_components/EditorClient'
@@ -6,7 +6,7 @@ import EditorClient from '@/app/_components/EditorClient'
 export default function DocumentEditorPage({ params }: { params: { id: string } }) {
   const id = Number(params.id)
   const [html, setHtml] = useState<string>('<p>...</p>')
-  const [title, setTitle] = useState<string>('(sem título)')
+  const [title, setTitle] = useState<string>('(sem tï¿½tulo)')
   const [loading, setLoading] = useState(true)
   const [previewHtml, setPreviewHtml] = useState<string | null>(null)
 
@@ -47,7 +47,7 @@ export default function DocumentEditorPage({ params }: { params: { id: string } 
           Salvar
         </button>
         <button className="btn" onClick={() => Api.approve(id).then(() => alert('Aprovado')).catch((e) => alert(e.message))}>
-          Enviar p/ aprovação
+          Enviar p/ aprovaï¿½ï¿½o
         </button>
         <button className="btn" onClick={() => Api.allocate(id).then(() => alert('Numerado')).catch((e) => alert(e.message))}>
           Numerar
@@ -79,7 +79,7 @@ export default function DocumentEditorPage({ params }: { params: { id: string } 
         </div>
         <div className="card p-4 space-y-4">
           <div>
-            <h3 className="font-semibold mb-2">Variáveis</h3>
+            <h3 className="font-semibold mb-2">Variï¿½veis</h3>
             <div className="flex flex-wrap gap-2">
               {['{{numero}}', '{{ano}}', '{{autoridade.nome}}'].map((tok) => (
                 <button key={tok} className="btn" onClick={() => setHtml((prev) => prev + ' ' + tok)}>
